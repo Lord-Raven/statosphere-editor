@@ -1,0 +1,27 @@
+{
+  "type": "array",
+  "description": "",
+  "minItems": 0,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "required": [
+      "name",
+      "initialValue"
+    ],
+    "properties": {
+      "name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "initialValue": {
+      },
+      "perTurnUpdate": {
+      },
+      "postInputUpdate": {
+      },
+      "postResponseUpdate": {
+      }
+    }
+  }
+}
