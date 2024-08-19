@@ -14,10 +14,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        Statosphere Configuration Builder
+      </header>
+      <body>
         <Form schema={schemaClassifier} validator={validator} />
         <Form schema={schemaPrompt} validator={validator} />
         <Form schema={schemaVariable} validator={validator} />
-      </header>
+      </body>
     </div>
   );
 }

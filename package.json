@@ -20,7 +20,8 @@
     "@rjsf/core": "^6.0.0-alpha.0",
     "@rjsf/utils": "^6.0.0-alpha.0",
     "@rjsf/validator-ajv8": "^6.0.0-alpha.0",
-    "@rjsf/material-ui": "^5.20.0"
+    "@rjsf/material-ui": "^5.20.0",
+    "@material-ui/core": "^4.12.4"
   },
   "scripts": {
     "predeploy": "npm run build",
