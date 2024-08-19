@@ -1,0 +1,37 @@
+{
+  "ui:label": false,
+  "items": {
+    "ui:label": false,
+    "ui:grid": [
+      {
+        "name": 6
+      },
+      {
+        "inputTemplate": 12,
+        "inputHypothesis": 12
+      },
+      {
+        "responseTemplate": 12,
+        "responseHypothesis": 12
+      },
+      {
+        "classifications": 24
+      }
+    ],
+    "classifications": {
+      "items": {
+        "ui:label": false,
+        "ui:grid": [
+          {
+            "label": 12,
+            "category": 6,
+            "threshold": 6
+          },
+          {
+            "updates": 24
+          }
+        ]
+      }
+    }
+  }
+}

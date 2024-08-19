@@ -1,0 +1,12 @@
+{
+  "ui:label": false,
+  "items": {
+    "ui:label": false,
+    "ui:grid": [
+      {
+        "condition": 6,
+        "prompt": 18
+      }
+    ]
+  }
+}
