@@ -4,15 +4,14 @@
     "ui:label": false,
     "ui:grid": [
       {
-        "name": 6
+        "name": 6,
+        "inputTemplate": 9,
+        "inputHypothesis": 9
       },
       {
-        "inputTemplate": 12,
-        "inputHypothesis": 12
-      },
-      {
-        "responseTemplate": 12,
-        "responseHypothesis": 12
+        "ui:placeholder": 6,
+        "responseTemplate": 9,
+        "responseHypothesis": 9
       },
       {
         "classifications": 24
@@ -30,7 +29,18 @@
           {
             "updates": 24
           }
-        ]
+        ],
+        "updates": {
+          "items": {
+            "ui:label": false,
+            "ui:grid": [
+              {
+                "variable": 6,
+                "setTo": 18
+              }
+            ]
+          }
+        }
       }
     }
   }

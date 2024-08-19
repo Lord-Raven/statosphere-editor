@@ -5,12 +5,16 @@ import validator from '@rjsf/validator-ajv8';
 import classifierSchema from "./assets/classifier-schema.json";
 import promptSchema from "./assets/prompt-schema.json";
 import variableSchema from "./assets/variable-schema.json";
+import classifierUiSchema from "./assets/classifier-ui-schema.json";
+import promptUiSchema from "./assets/prompt-ui-schema.json";
 import variableUiSchema from "./assets/variable-ui-schema.json";
 import ObjectFieldTemplate from './ObjectFieldTemplate';
 
 const schemaClassifier: any = classifierSchema;
 const schemaPrompt: any = promptSchema;
 const schemaVariable: any = variableSchema;
+const uiSchemaClassifier: any = classifierUiSchema;
+const uiSchemaPrompt: any = promptUiSchema;
 const uiSchemaVariable: any = variableUiSchema;
 
 function App() {
@@ -25,11 +29,21 @@ function App() {
         validator={validator}
         templates={{ObjectFieldTemplate: ObjectFieldTemplate}}
         uiSchema={uiSchemaVariable}
-          />
+      />
       <h1>Classifiers</h1>
-      <Form schema={schemaClassifier} validator={validator}/>
+      <Form
+          schema={schemaClassifier}
+          validator={validator}
+          templates={{ObjectFieldTemplate: ObjectFieldTemplate}}
+          uiSchema={uiSchemaClassifier}
+      />
       <h1>Prompt</h1>
-      <Form schema={schemaPrompt} validator={validator}/>
+      <Form
+          schema={schemaPrompt}
+          validator={validator}
+          templates={{ObjectFieldTemplate: ObjectFieldTemplate}}
+          uiSchema={uiSchemaPrompt}
+      />
     </div>
   );
 }

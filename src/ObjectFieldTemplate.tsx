@@ -156,7 +156,7 @@ export default function ObjectFieldTemplate<
                                                 {element.content}
                                             </Col>
                                         } else {
-                                            return <></>
+                                            return <Col span={ui_row[row_item]}></Col>
                                         }
                                     })
 
