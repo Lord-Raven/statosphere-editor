@@ -16,11 +16,12 @@ function App() {
       <header className="App-header">
         Statosphere Configuration Builder
       </header>
-      <body>
-        <Form schema={schemaClassifier} validator={validator} />
-        <Form schema={schemaPrompt} validator={validator} />
-        <Form schema={schemaVariable} validator={validator} />
-      </body>
+      <h1>Variables</h1>
+      <Form schema={schemaVariable} validator={validator}/>
+      <h1>Classifiers</h1>
+      <Form schema={schemaClassifier} validator={validator}/>
+      <h1>Prompt</h1>
+      <Form schema={schemaPrompt} validator={validator}/>
     </div>
   );
 }

@@ -47,21 +47,30 @@
         "minItems": 1,
         "items": {
           "required": [
-            "label",
-            "threshold"
+            "label"
           ],
           "properties": {
             "label": {
+              "title": "Label",
+              "description": "The label substituted into the hypothesis.",
               "type": "string",
               "minLength": 1
             },
             "category": {
+              "title": "Category",
+              "description": "If multiple labels share the same category, only the highest entailment among them will apply.",
               "type": "string"
             },
             "threshold": {
-              "type": "number"
+              "title": "Threshold",
+              "description":  "The minimum entailment score to apply this classification.",
+              "type": "number",
+              "minimum": "0",
+              "maximum": "1"
             },
             "updates": {
+              "title": "Updates",
+              "description": "An array of variable updates to make when this classification is applied.",
               "type": "array",
               "uniqueItems": true,
               "minItems": 1,
@@ -72,10 +81,14 @@
                 ],
                 "properties": {
                   "variable": {
+                    "title": "Variable",
+                    "description": "Name of the variable to update when this classification is applied.",
                     "type": "string",
                     "minLength": 1
                   },
                   "setTo": {
+                    "title": "Set To",
+                    "description": "Value to update this variable to when this classification is applied.",
                     "type": "string"
                   }
                 }

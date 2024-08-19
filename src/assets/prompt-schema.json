@@ -1,6 +1,7 @@
 {
+  "title": "Prompts",
+  "description": "An array of additional prompts to include under specified conditions.",
   "type": "array",
-  "description": "",
   "minItems": 0,
   "uniqueItems": true,
   "items": {
@@ -11,10 +12,14 @@
     ],
     "properties": {
       "condition": {
+        "title": "Condition",
+        "description": "Requirement for inclusion.",
         "type": "string",
         "minLength": 1
       },
       "prompt": {
+        "title": "Prompt",
+        "description": "Prompt to include.",
         "type": "string",
         "minLength": 1
       }
