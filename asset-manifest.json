@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/statosphere-editor/static/css/main.f3394fcd.css",
-    "main.js": "/statosphere-editor/static/js/main.08e5798f.js",
+    "main.js": "/statosphere-editor/static/js/main.b511d8e8.js",
     "static/js/453.d320a7be.chunk.js": "/statosphere-editor/static/js/453.d320a7be.chunk.js",
     "index.html": "/statosphere-editor/index.html",
     "main.f3394fcd.css.map": "/statosphere-editor/static/css/main.f3394fcd.css.map",
-    "main.08e5798f.js.map": "/statosphere-editor/static/js/main.08e5798f.js.map",
+    "main.b511d8e8.js.map": "/statosphere-editor/static/js/main.b511d8e8.js.map",
     "453.d320a7be.chunk.js.map": "/statosphere-editor/static/js/453.d320a7be.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f3394fcd.css",
-    "static/js/main.08e5798f.js"
+    "static/js/main.b511d8e8.js"
   ]
 }
