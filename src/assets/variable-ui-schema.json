@@ -1,5 +1,7 @@
 {
-  "ui:label": false,
+  "ui:submitButtonOptions": {
+    "norender": true
+  },
   "items": {
     "ui:label": false,
     "ui:grid": [

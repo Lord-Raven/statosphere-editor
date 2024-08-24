@@ -1,5 +1,5 @@
 {
-  "title": "Array of Variables",
+  "title": "Variables",
   "type": "array",
   "minItems": 0,
   "uniqueItems": true,

@@ -1,11 +1,14 @@
 {
-  "ui:label": false,
+  "ui:submitButtonOptions": {
+    "norender": true
+  },
   "items": {
     "ui:label": false,
     "ui:grid": [
       {
+        "category": 2,
         "condition": 6,
-        "prompt": 18
+        "modification": 16
       }
     ]
   }

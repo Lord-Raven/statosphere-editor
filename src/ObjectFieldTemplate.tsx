@@ -50,8 +50,6 @@ export default function ObjectFieldTemplate<
         title,
         uiSchema,
     } = props;
-    console.log('ObjectFieldTemplate props: ')
-    console.log(props)
     const uiOptions = getUiOptions<T, S, F>(uiSchema);
     const TitleFieldTemplate = getTemplate<'TitleFieldTemplate', T, S, F>('TitleFieldTemplate', registry, uiOptions);
     const DescriptionFieldTemplate = getTemplate<'DescriptionFieldTemplate', T, S, F>(
@@ -110,8 +108,6 @@ export default function ObjectFieldTemplate<
     return (
         <ConfigConsumer>
             {(configProps: ConfigConsumerProps) => {
-                console.log('config props are')
-                console.log(configProps)
                 const { getPrefixCls } = configProps;
                 const prefixCls = getPrefixCls('form');
                 const labelClsBasic = `${prefixCls}-item-label`;

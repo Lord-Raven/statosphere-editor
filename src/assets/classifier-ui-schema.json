@@ -1,5 +1,7 @@
 {
-  "ui:label": false,
+  "ui:submitButtonOptions": {
+    "norender": true
+  },
   "items": {
     "ui:label": false,
     "ui:grid": [
@@ -30,6 +32,9 @@
             "updates": 24
           }
         ],
+        "threshold": {
+          "ui:widget": "range"
+        },
         "updates": {
           "items": {
             "ui:label": false,

@@ -24,7 +24,8 @@
     "lodash": "^4.17.21",
     "@types/lodash": "^4.17.7",
     "classnames": "^2.5.1",
-    "antd": "^5.20.1"
+    "antd": "^5.20.1",
+    "react-copy-to-clipboard": "^5.1.0"
   },
   "scripts": {
     "predeploy": "npm run build",

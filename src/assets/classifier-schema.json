@@ -44,7 +44,7 @@
         "description": "An array of classifications to test for.",
         "type": "array",
         "uniqueItems": true,
-        "minItems": 1,
+        "minItems": 0,
         "items": {
           "required": [
             "label"
@@ -58,22 +58,23 @@
             },
             "category": {
               "title": "Category",
-              "description": "If multiple labels share the same category, only the highest entailment among them will apply.",
+              "description": "If multiple labels share a category, only the highest entailment applies.",
               "type": "string"
             },
             "threshold": {
               "title": "Threshold",
               "description":  "The minimum entailment score to apply this classification.",
               "type": "number",
-              "minimum": "0",
-              "maximum": "1"
+              "minimum": 0,
+              "maximum": 1,
+              "multipleOf": 0.05
             },
             "updates": {
               "title": "Updates",
               "description": "An array of variable updates to make when this classification is applied.",
               "type": "array",
               "uniqueItems": true,
-              "minItems": 1,
+              "minItems": 0,
               "items": {
                 "required": [
                   "variable",
@@ -82,7 +83,7 @@
                 "properties": {
                   "variable": {
                     "title": "Variable",
-                    "description": "Name of the variable to update when this classification is applied.",
+                    "description": "Name of the variable to update.",
                     "type": "string",
                     "minLength": 1
                   },
