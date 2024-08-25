@@ -36,11 +36,11 @@ function ArrayFieldTitleTemplate(props: ArrayFieldTitleProps) {
 
 function App() {
     const [classifierData, setClassifierData] = useState({});
-    const [classifierJson, setClassifierJson] = useState('[]');
+    const [classifierJson, setClassifierJson] = useState('');
     const [contentData, setContentData] = useState({});
-    const [contentJson, setContentJson] = useState('[]');
+    const [contentJson, setContentJson] = useState('');
     const [variableData, setVariableData] = useState({});
-    const [variableJson, setVariableJson] = useState('[]');
+    const [variableJson, setVariableJson] = useState('');
     const [classifierCopyStatus, setClassifierCopyStatus] = useState(false);
     const [contentCopyStatus, setContentCopyStatus] = useState(false);
     const [variableCopyStatus, setVariableCopyStatus] = useState(false);
