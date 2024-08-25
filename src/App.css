@@ -27,6 +27,15 @@
   color: white;
 }
 
+.App-footer {
+  background-color: #282c34;
+  min-height: 3vh;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(5px + 1vmin);
+  color: white;
+}
+
 .App-link {
   color: #61dafb;
 }

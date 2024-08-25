@@ -10,6 +10,12 @@
         "condition": 6,
         "modification": 16
       }
-    ]
+    ],
+    "condition": {
+      "ui:widget": "textarea"
+    },
+    "modification": {
+      "ui:widget": "textarea"
+    }
   }
 }

@@ -19,6 +19,18 @@
         "classifications": 24
       }
     ],
+    "inputTemplate": {
+      "ui:widget": "textarea"
+    },
+    "inputHypothesis": {
+      "ui:widget": "textarea"
+    },
+    "responseTemplate": {
+      "ui:widget": "textarea"
+    },
+    "responseHypothesis": {
+      "ui:widget": "textarea"
+    },
     "classifications": {
       "items": {
         "ui:label": false,
@@ -43,7 +55,10 @@
                 "variable": 6,
                 "setTo": 18
               }
-            ]
+            ],
+            "setTo": {
+              "ui:widget": "textarea"
+            }
           }
         }
       }

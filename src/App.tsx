@@ -14,6 +14,8 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 import {ArrayFieldTitleProps} from "@rjsf/utils";
 import ArrayFieldTemplate from "./ArrayFieldTemplate";
 import ArrayFieldItemTemplate from "./ArrayFieldItemTemplate";
+import TextareaWidget from "./TextareaWidget";
+import fastJson from "fast-json-stringify";
 
 const schemaClassifier: any = classifierSchema;
 const schemaContent: any = contentSchema;
@@ -22,30 +24,39 @@ const uiSchemaClassifier: any = classifierUiSchema;
 const uiSchemaContent: any = contentUiSchema;
 const uiSchemaVariable: any = variableUiSchema;
 
+const classifierStringify = fastJson(classifierSchema);
+const contentStringify = fastJson(contentSchema);
+const variableStringify = fastJson(variableSchema);
+
+
 function ArrayFieldTitleTemplate(props: ArrayFieldTitleProps) {
     const {title} = props;
     return <div style={{float: "left"}}>{title}</div>;
 }
 
-
 function App() {
     const [classifierData, setClassifierData] = useState({});
-    const [classifierJson, setClassifierJson] = useState('');
+    const [classifierJson, setClassifierJson] = useState('[]');
     const [contentData, setContentData] = useState({});
-    const [contentJson, setContentJson] = useState('');
+    const [contentJson, setContentJson] = useState('[]');
     const [variableData, setVariableData] = useState({});
-    const [variableJson, setVariableJson] = useState('');
+    const [variableJson, setVariableJson] = useState('[]');
     const [classifierCopyStatus, setClassifierCopyStatus] = useState(false);
     const [contentCopyStatus, setContentCopyStatus] = useState(false);
     const [variableCopyStatus, setVariableCopyStatus] = useState(false);
 
-    const handleChange = (value: any, setData: React.Dispatch<React.SetStateAction<{}>>, setJson: React.Dispatch<React.SetStateAction<string>>) => {
+    const handleChange = (value: any, setData: React.Dispatch<React.SetStateAction<{}>>, setJson: React.Dispatch<React.SetStateAction<string>>, stringify: (arg: any) => string) => {
         if (typeof value === "string") {
             setData(JSON.parse(value));
             setJson(value);
         } else {
             setData(value);
-            setJson(JSON.stringify(value));
+            try {
+                setJson(stringify(value));
+            } catch (error) {
+                console.log(error);
+                setJson(JSON.stringify(value));
+            }
         }
     };
 
@@ -64,15 +75,29 @@ function App() {
                 <Form
                     schema={schemaVariable}
                     uiSchema={uiSchemaVariable}
-                    onChange={(data) => {handleChange(data.formData, setVariableData, setVariableJson)}}
+                    onChange={(data) => {
+                        handleChange(data.formData, setVariableData, setVariableJson, variableStringify)
+                    }}
                     formData={variableData}
                     formContext={{descriptionLocation: 'tooltip'}}
                     validator={validator}
-                    templates={{ObjectFieldTemplate: ObjectFieldTemplate, ArrayFieldTemplate: ArrayFieldTemplate, ArrayFieldItemTemplate: ArrayFieldItemTemplate, ArrayFieldTitleTemplate: ArrayFieldTitleTemplate}}
+                    templates={{
+                        ObjectFieldTemplate: ObjectFieldTemplate,
+                        ArrayFieldTemplate: ArrayFieldTemplate,
+                        ArrayFieldItemTemplate: ArrayFieldItemTemplate,
+                        ArrayFieldTitleTemplate: ArrayFieldTitleTemplate
+                    }}
+                    widgets={{
+                        TextareaWidget: TextareaWidget
+                    }}
                 />
                 <div style={{display: 'flex'}}>
-                    <Input id="variableInput" value={variableJson} onChange={(e) => handleChange(e.target.value, setVariableData, setVariableJson)} placeholder="Build structure above or paste JSON here." />
-                    <CopyToClipboard text={variableJson} onCopy={() => onCopyStatus(setVariableCopyStatus)} className="button" data-clipboard-action="copy" data-clipboard-target="#variableInput">
+                    <Input id="variableInput" value={variableJson}
+                           onChange={(e) => handleChange(e.target.value, setVariableData, setVariableJson, variableStringify)}
+                           placeholder="Build structure above or paste JSON here."/>
+                    <CopyToClipboard text={variableJson} onCopy={() => onCopyStatus(setVariableCopyStatus)}
+                                     className="button" data-clipboard-action="copy"
+                                     data-clipboard-target="#variableInput">
                         <Button danger={variableCopyStatus}>{variableCopyStatus ? 'Copied!' : 'Copy'}</Button>
                     </CopyToClipboard>
                 </div>
@@ -81,15 +106,29 @@ function App() {
                 <Form
                     schema={schemaClassifier}
                     uiSchema={uiSchemaClassifier}
-                    onChange={(data) => {handleChange(data.formData, setClassifierData, setClassifierJson)}}
+                    onChange={(data) => {
+                        handleChange(data.formData, setClassifierData, setClassifierJson, classifierStringify)
+                    }}
                     formData={classifierData}
                     formContext={{descriptionLocation: 'tooltip'}}
                     validator={validator}
-                    templates={{ObjectFieldTemplate: ObjectFieldTemplate, ArrayFieldTemplate: ArrayFieldTemplate, ArrayFieldItemTemplate: ArrayFieldItemTemplate, ArrayFieldTitleTemplate: ArrayFieldTitleTemplate}}
+                    templates={{
+                        ObjectFieldTemplate: ObjectFieldTemplate,
+                        ArrayFieldTemplate: ArrayFieldTemplate,
+                        ArrayFieldItemTemplate: ArrayFieldItemTemplate,
+                        ArrayFieldTitleTemplate: ArrayFieldTitleTemplate
+                    }}
+                    widgets={{
+                        TextareaWidget: TextareaWidget
+                    }}
                 />
                 <div style={{display: 'flex'}}>
-                    <Input id="classifierInput" value={classifierJson} onChange={(e) => handleChange(e.target.value, setClassifierData, setClassifierJson)} placeholder="Build structure above or paste JSON here." />
-                    <CopyToClipboard text={classifierJson} onCopy={() => onCopyStatus(setClassifierCopyStatus)} className="button" data-clipboard-action="copy" data-clipboard-target="#classifierInput">
+                    <Input id="classifierInput" value={classifierJson}
+                           onChange={(e) => handleChange(e.target.value, setClassifierData, setClassifierJson, classifierStringify)}
+                           placeholder="Build structure above or paste JSON here."/>
+                    <CopyToClipboard text={classifierJson} onCopy={() => onCopyStatus(setClassifierCopyStatus)}
+                                     className="button" data-clipboard-action="copy"
+                                     data-clipboard-target="#classifierInput">
                         <Button danger={classifierCopyStatus}>{classifierCopyStatus ? 'Copied!' : 'Copy'}</Button>
                     </CopyToClipboard>
                 </div>
@@ -98,19 +137,36 @@ function App() {
                 <Form
                     schema={schemaContent}
                     uiSchema={uiSchemaContent}
-                    onChange={(data) => {handleChange(data.formData, setContentData, setContentJson)}}
+                    onChange={(data) => {
+                        handleChange(data.formData, setContentData, setContentJson, contentStringify)
+                    }}
                     formData={contentData}
                     formContext={{descriptionLocation: 'tooltip'}}
                     validator={validator}
-                    templates={{ObjectFieldTemplate: ObjectFieldTemplate, ArrayFieldTemplate: ArrayFieldTemplate, ArrayFieldItemTemplate: ArrayFieldItemTemplate, ArrayFieldTitleTemplate: ArrayFieldTitleTemplate}}
+                    templates={{
+                        ObjectFieldTemplate: ObjectFieldTemplate,
+                        ArrayFieldTemplate: ArrayFieldTemplate,
+                        ArrayFieldItemTemplate: ArrayFieldItemTemplate,
+                        ArrayFieldTitleTemplate: ArrayFieldTitleTemplate
+                    }}
+                    widgets={{
+                        TextareaWidget: TextareaWidget
+                    }}
                 />
                 <div style={{display: 'flex'}}>
-                    <Input id="contentInput" value={contentJson} onChange={(e) => handleChange(e.target.value, setContentData, setContentJson)} placeholder="Build structure above or paste JSON here." />
-                    <CopyToClipboard text={contentJson} onCopy={() => onCopyStatus(setContentCopyStatus)} className="button" data-clipboard-action="copy" data-clipboard-target="#contentInput">
+                    <Input id="contentInput" value={contentJson}
+                           onChange={(e) => handleChange(e.target.value, setContentData, setContentJson, contentStringify)}
+                           placeholder="Build structure above or paste JSON here."/>
+                    <CopyToClipboard text={contentJson} onCopy={() => onCopyStatus(setContentCopyStatus)}
+                                     className="button" data-clipboard-action="copy"
+                                     data-clipboard-target="#contentInput">
                         <Button danger={contentCopyStatus}>{contentCopyStatus ? 'Copied!' : 'Copy'}</Button>
                     </CopyToClipboard>
                 </div>
             </ConfigProvider>
+            <header className="App-footer">
+                Visit <a href='https://venus.chub.ai/extensions/Ravenok/statosphere-3704059fdd7e'>the stage</a> for more information or examples.
+            </header>
         </div>
     );
 }
