@@ -91,7 +91,8 @@ function App() {
                         TextareaWidget: TextareaWidget
                     }}
                 />
-                <div style={{display: 'flex'}}>
+                <div style={{display: 'flex', paddingLeft: '8px', paddingRight: '8px'}}>
+                    Final JSON:
                     <Input id="variableInput" value={variableJson}
                            onChange={(e) => handleChange(e.target.value, setVariableData, setVariableJson, variableStringify)}
                            placeholder="Build structure above or paste JSON here."/>
@@ -122,7 +123,8 @@ function App() {
                         TextareaWidget: TextareaWidget
                     }}
                 />
-                <div style={{display: 'flex'}}>
+                <div style={{display: 'flex', paddingLeft: '8px', paddingRight: '8px'}}>
+                    Final JSON:
                     <Input id="classifierInput" value={classifierJson}
                            onChange={(e) => handleChange(e.target.value, setClassifierData, setClassifierJson, classifierStringify)}
                            placeholder="Build structure above or paste JSON here."/>
@@ -153,7 +155,8 @@ function App() {
                         TextareaWidget: TextareaWidget
                     }}
                 />
-                <div style={{display: 'flex'}}>
+                <div style={{display: 'flex', paddingLeft: '8px', paddingRight: '8px'}}>
+                    Final JSON:
                     <Input id="contentInput" value={contentJson}
                            onChange={(e) => handleChange(e.target.value, setContentData, setContentJson, contentStringify)}
                            placeholder="Build structure above or paste JSON here."/>
