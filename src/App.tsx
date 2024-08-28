@@ -45,11 +45,13 @@ function App() {
     const [contentCopyStatus, setContentCopyStatus] = useState(false);
     const [variableCopyStatus, setVariableCopyStatus] = useState(false);
 
+
     const handleChange = (value: any, setData: React.Dispatch<React.SetStateAction<{}>>, setJson: React.Dispatch<React.SetStateAction<string>>, stringify: (arg: any) => string) => {
         if (typeof value === "string") {
             setData(JSON.parse(value));
             setJson(value);
         } else {
+            console.log('testing...');
             setData(value);
             try {
                 setJson(stringify(value));
@@ -75,8 +77,8 @@ function App() {
                 <Form
                     schema={schemaVariable}
                     uiSchema={uiSchemaVariable}
-                    onBlur={() => {
-                        handleChange(variableData, setVariableData, setVariableJson, variableStringify)
+                    onChange={(e) => {
+                        handleChange(e.formData, setVariableData, setVariableJson, variableStringify)
                     }}
                     formData={variableData}
                     formContext={{descriptionLocation: 'tooltip'}}
@@ -106,8 +108,8 @@ function App() {
                 <Form
                     schema={schemaClassifier}
                     uiSchema={uiSchemaClassifier}
-                    onBlur={() => {
-                        handleChange(classifierData, setClassifierData, setClassifierJson, classifierStringify)
+                    onChange={(e) => {
+                        handleChange(e.formData, setClassifierData, setClassifierJson, classifierStringify)
                     }}
                     formData={classifierData}
                     formContext={{descriptionLocation: 'tooltip'}}
@@ -137,8 +139,8 @@ function App() {
                 <Form
                     schema={schemaContent}
                     uiSchema={uiSchemaContent}
-                    onBlur={() => {
-                        handleChange(contentData, setContentData, setContentJson, contentStringify)
+                    onChange={(e) => {
+                        handleChange(e.formData, setContentData, setContentJson, contentStringify)
                     }}
                     formData={contentData}
                     formContext={{descriptionLocation: 'tooltip'}}
