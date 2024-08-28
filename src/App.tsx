@@ -76,7 +76,7 @@ function App() {
                     schema={schemaVariable}
                     uiSchema={uiSchemaVariable}
                     onBlur={() => {
-                        handleChange(FormData, setVariableData, setVariableJson, variableStringify)
+                        handleChange(variableData, setVariableData, setVariableJson, variableStringify)
                     }}
                     formData={variableData}
                     formContext={{descriptionLocation: 'tooltip'}}
@@ -107,7 +107,7 @@ function App() {
                     schema={schemaClassifier}
                     uiSchema={uiSchemaClassifier}
                     onBlur={() => {
-                        handleChange(FormData, setClassifierData, setClassifierJson, classifierStringify)
+                        handleChange(classifierData, setClassifierData, setClassifierJson, classifierStringify)
                     }}
                     formData={classifierData}
                     formContext={{descriptionLocation: 'tooltip'}}
@@ -138,7 +138,7 @@ function App() {
                     schema={schemaContent}
                     uiSchema={uiSchemaContent}
                     onBlur={() => {
-                        handleChange(FormData, setContentData, setContentJson, contentStringify)
+                        handleChange(contentData, setContentData, setContentJson, contentStringify)
                     }}
                     formData={contentData}
                     formContext={{descriptionLocation: 'tooltip'}}
