@@ -1,5 +1,5 @@
 import {ArrayFieldTitleProps} from "@rjsf/utils";
-import React, {useState} from "react";
+import React, {useCallback, useMemo, useState} from "react";
 import fastJson from "fast-json-stringify";
 import Form from "@rjsf/antd";
 import validator from "@rjsf/validator-ajv8";
@@ -10,10 +10,10 @@ import TextareaWidget from "../TextareaWidget";
 import {Button, Input} from "antd";
 import {CopyToClipboard} from "react-copy-to-clipboard";
 
-function ArrayFieldTitleTemplate(props: ArrayFieldTitleProps) {
+const ArrayFieldTitleTemplate = React.memo((props: ArrayFieldTitleProps) => {
     const {title} = props;
     return <div style={{float: "left"}}>{title}</div>;
-}
+});
 
 interface BlurFormProps {
     schema: any;
@@ -24,37 +24,38 @@ export const BlurForm: React.FC<BlurFormProps> = ({schema, uiSchema}) => {
     const [formData, setFormData] = useState({});
     const [formJson, setFormJson] = useState('');
     const [formCopyStatus, setFormCopyStatus] = useState(false);
-    const formStringify = fastJson(schema);
+    const formStringify = useMemo(() => fastJson(schema), [schema]);
+    const inputStyle = {display: 'flex', paddingLeft: '8px', paddingRight: '8px'};
 
     const onCopyStatus = () => {
         setFormCopyStatus(true);
         setTimeout(() => setFormCopyStatus(false), 1500);
     };
 
-    const handleDataChange = (data: any) => {
+    const handleDataChange = useCallback((data: any) => {
         setFormData(data);
-    };
+    }, []);
 
-    const handleJsonChange = (data: string) => {
+    const handleJsonChange = useCallback((data: string) => {
         setFormJson(data);
-    };
+    }, []);
 
-    const handleDataBlur = () => {
+    const handleDataBlur = useCallback(() => {
         try {
             setFormJson(formStringify(formData));
         } catch (error) {
             console.log(error);
             setFormJson(JSON.stringify(formData));
         }
-    };
+    }, [formData, formStringify]);
 
-    const handleJsonBlur = () => {
+    const handleJsonBlur = useCallback(() => {
         try {
             setFormData(JSON.parse(formJson));
         } catch (error) {
             console.log(error);
         }
-    };
+    }, [formJson]);
 
     return (
         <div>
@@ -76,7 +77,7 @@ export const BlurForm: React.FC<BlurFormProps> = ({schema, uiSchema}) => {
                     TextareaWidget: TextareaWidget
                 }}
             />
-            <div style={{display: 'flex', paddingLeft: '8px', paddingRight: '8px'}}>
+            <div style={inputStyle}>
                 <Input value={formJson}
                        onChange={(e) => handleJsonChange(e.target.value)}
                        onBlur={() => handleJsonBlur()}
