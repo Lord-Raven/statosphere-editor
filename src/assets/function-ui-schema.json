@@ -1,0 +1,24 @@
+{
+  "ui:submitButtonOptions": {
+    "norender": true
+  },
+  "items": {
+    "ui:label": false,
+    "ui:grid": [
+      {
+        "name": 6,
+        "parameters": 6,
+        "body": 12
+      }
+    ],
+    "name": {
+      "ui:widget": "textarea"
+    },
+    "parameters": {
+      "ui:widget": "textarea"
+    },
+    "body": {
+      "ui:widget": "textarea"
+    }
+  }
+}

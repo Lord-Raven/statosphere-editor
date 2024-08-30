@@ -3,10 +3,10 @@ import React, {useCallback, useMemo, useState} from "react";
 import fastJson from "fast-json-stringify";
 import Form from "@rjsf/antd";
 import validator from "@rjsf/validator-ajv8";
-import ObjectFieldTemplate from "../ObjectFieldTemplate";
-import ArrayFieldTemplate from "../ArrayFieldTemplate";
-import ArrayFieldItemTemplate from "../ArrayFieldItemTemplate";
-import TextareaWidget from "../TextareaWidget";
+import ObjectFieldTemplate from "./ObjectFieldTemplate";
+import ArrayFieldTemplate from "./ArrayFieldTemplate";
+import ArrayFieldItemTemplate from "./ArrayFieldItemTemplate";
+import TextareaWidget from "./TextareaWidget";
 import {Button, Input} from "antd";
 import {CopyToClipboard} from "react-copy-to-clipboard";
 

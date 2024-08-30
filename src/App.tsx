@@ -2,11 +2,13 @@ import './App.css';
 import {ConfigProvider, theme} from 'antd';
 import classifierSchema from "./assets/classifier-schema.json";
 import contentSchema from "./assets/content-schema.json";
+import functionSchema from "./assets/function-schema.json";
 import variableSchema from "./assets/variable-schema.json";
 import classifierUiSchema from "./assets/classifier-ui-schema.json";
 import contentUiSchema from "./assets/content-ui-schema.json";
+import functionUiSchema from "./assets/function-ui-schema.json";
 import variableUiSchema from "./assets/variable-ui-schema.json";
-import {BlurForm} from "./assets/BlurForm";
+import {BlurForm} from "./BlurForm";
 
 
 function App() {
@@ -21,6 +23,12 @@ function App() {
                 <BlurForm
                     schema={variableSchema}
                     uiSchema={variableUiSchema}
+                />
+
+                <h1>Functions</h1>
+                <BlurForm
+                    schema={functionSchema}
+                    uiSchema={functionUiSchema}
                 />
 
                 <h1>Classifiers</h1>
