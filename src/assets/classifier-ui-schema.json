@@ -11,7 +11,7 @@
         "inputHypothesis": 9
       },
       {
-        "ui:placeholder": 6,
+        "condition": 6,
         "responseTemplate": 9,
         "responseHypothesis": 9
       },
@@ -19,6 +19,9 @@
         "classifications": 24
       }
     ],
+    "condition": {
+      "ui:widget": "textarea"
+    },
     "inputTemplate": {
       "ui:widget": "textarea"
     },

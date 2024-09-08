@@ -49,3 +49,7 @@
     transform: rotate(360deg);
   }
 }
+
+.ant-input {
+  font-family: 'Courier New', Courier, monospace;
+}
