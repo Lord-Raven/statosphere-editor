@@ -26,7 +26,7 @@ export default function ArrayFieldItemTemplate<
         onReorderClick,
         readonly,
         registry,
-        uiSchema,
+        uiSchema
     } = props;
     const { MoveDownButton, MoveUpButton, RemoveButton } = registry.templates.ButtonTemplates;
     const { rowGutter = 16, toolbarAlign = 'top' } = registry.formContext;

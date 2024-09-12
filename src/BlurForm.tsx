@@ -25,11 +25,22 @@ interface BlurFormProps {
 export const BlurForm: React.FC<BlurFormProps> = ({schema, uiSchema, formData, formJson, setFormData, setFormJson}) => {
     const formStringify = useMemo(() => fastJson(schema), [schema]);
 
-    const handleDataChange = useCallback((data: any) => {
+    const handleDataChange = useCallback((data: any, id: string|undefined) => {
         setFormData(data);
-    }, [formData]);
+        if (id && ['root', 'classifiers', 'updates'].includes(id.slice(id.lastIndexOf('_') + 1))) {
+            let json = '';
+            try {
+                json = formStringify(data);
+            } catch (error) {
+                console.log(error);
+                json = JSON.stringify(data);
+            }
+            setFormJson(json);
+        }
+    }, [formData, formJson, formStringify]);
 
     const handleDataBlur = useCallback(() => {
+
         let json = '';
         try {
             json = formStringify(formData);
@@ -39,13 +50,14 @@ export const BlurForm: React.FC<BlurFormProps> = ({schema, uiSchema, formData, f
         }
         setFormJson(json);
     }, [formData, formJson, formStringify]);
+
     return (
         <div>
             <Form
                 schema={schema}
                 uiSchema={uiSchema}
                 onBlur={() => handleDataBlur()}
-                onChange={(e) => handleDataChange(e.formData)}
+                onChange={(e, id) => handleDataChange(e.formData, id)}
                 formData={formData}
                 formContext={{descriptionLocation: 'tooltip'}}
                 validator={validator}

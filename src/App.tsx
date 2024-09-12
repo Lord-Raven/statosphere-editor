@@ -10,7 +10,6 @@ import functionUiSchema from "./assets/function-ui-schema.json";
 import variableUiSchema from "./assets/variable-ui-schema.json";
 import {BlurForm} from "./BlurForm";
 import React, {useCallback, useEffect, useState} from "react";
-import {CopyToClipboard} from "react-copy-to-clipboard";
 import { CopyOutlined } from '@ant-design/icons';
 
 function App() {
@@ -27,7 +26,9 @@ function App() {
     const [variableData, setVariableData] = useState({});
     const [variableJson, setVariableJson] = useState('[]');
 
-    const [fullJson, setFullJson] = useState(`{"classifiers":[],"content":[],"functions":[],"variables":[]}`);
+    const [fullJson, setFullJson] = useState('');
+
+
     const inputStyle = {display: 'flex', paddingLeft: '8px', paddingRight: '8px'};
     const footerStyle = {
         position: 'fixed' as 'fixed',
@@ -38,11 +39,12 @@ function App() {
         justifyContent: 'center',
     };
 
+    const [formCopyFlag, setFormCopyFlag] = useState(false);
     const [formCopyStatus, setFormCopyStatus] = useState(false);
-    const onCopyStatus = () => {
-        setFormCopyStatus(true);
-        setTimeout(() => setFormCopyStatus(false), 1500);
-    };
+
+    const handleCopy = useCallback(() => {
+            setFormCopyFlag(true);
+    }, [formCopyFlag]);
 
     const handleJsonChange = useCallback((json: string) => {
         setFullJson(json);
@@ -66,8 +68,21 @@ function App() {
     }, [fullJson, classifierData, contentData, functionData, variableData, classifierJson, contentJson, functionJson, variableJson]);
 
     useEffect(() => {
-        setFullJson(`{"classifiers":${classifierJson ?? '[]'},"content":${contentJson ?? '[]'},"functions":${functionJson ?? '[]'},"variables":${variableJson ?? '[]'}}`);
+        let newJson = `{"classifiers":${classifierJson ?? '[]'},"content":${contentJson ?? '[]'},"functions":${functionJson ?? '[]'},"variables":${variableJson ?? '[]'}}`;
+        if (newJson == '{"classifiers":[],"content":[],"functions":[],"variables":[]}') {
+            newJson = '';
+        }
+        setFullJson(newJson);
     }, [fullJson, classifierJson, contentJson, functionJson, variableJson]);
+
+    useEffect(() => {
+        if (formCopyFlag) {
+            setFormCopyStatus(true);
+            navigator.clipboard.writeText(fullJson).then(() => {
+                setTimeout(() => {setFormCopyStatus(false); setFormCopyFlag(false)}, 1500);
+            });
+        }
+    }, [formCopyFlag, fullJson]);
 
     return (
         <div className="App">
@@ -122,10 +137,7 @@ function App() {
                                    onChange={(e) => handleJsonChange(e.target.value)}
                                    onBlur={() => handleJsonBlur()}
                                    placeholder="Build structure above or paste JSON here."/>
-                            <CopyToClipboard text={fullJson} onCopy={() => onCopyStatus()}
-                                             className="button" data-clipboard-action="copy">
-                                <Button type={formCopyStatus ? "default" : "primary"} icon={formCopyStatus ? null : <CopyOutlined />} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '5vw' }}>{formCopyStatus ? 'Copied!' : ''}</Button>
-                            </CopyToClipboard>
+                            <Button onClick={handleCopy} type={formCopyStatus ? "default" : "primary"} icon={formCopyStatus ? null : <CopyOutlined />} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '5vw' }}>{formCopyStatus ? 'Copied!' : ''}</Button>
                         </div>
                         <div>
                             Visit <a href='https://venus.chub.ai/extensions/Ravenok/statosphere-3704059fdd7e'>the

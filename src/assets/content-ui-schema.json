@@ -6,9 +6,9 @@
     "ui:label": false,
     "ui:grid": [
       {
-        "category": 2,
+        "category": 3,
         "condition": 6,
-        "modification": 16
+        "modification": 15
       }
     ],
     "condition": {
