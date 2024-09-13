@@ -30,11 +30,9 @@ export default function ArrayFieldItemTemplate<
     } = props;
     const { MoveDownButton, MoveUpButton, RemoveButton } = registry.templates.ButtonTemplates;
     const { rowGutter = 16, toolbarAlign = 'top' } = registry.formContext;
-
     return (
         <Row align={toolbarAlign} key={`array-item-${index}`} gutter={rowGutter}>
             <Col span={23}><div style={{backgroundColor: '#ffffff11'}}>{children}</div></Col>
-
             {hasToolbar && (
                 <Col span={1}>
                     {(hasMoveUp || hasMoveDown) && (

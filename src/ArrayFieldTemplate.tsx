@@ -62,10 +62,14 @@ export default function ArrayFieldTemplate<
         labelAlign === 'left' && `${labelClsBasic}-left`
         // labelCol.className,
     );
+    console.log(labelColClassName);
+    console.log(uiSchema);
 
     const BTN_GRP_STYLE = {
         width: '100%',
     };
+
+    const isClassifier = uiSchema && uiSchema["classifications"];
 
     return (
         <fieldset className={className} id={idSchema.$id}>
@@ -102,6 +106,9 @@ export default function ArrayFieldTemplate<
                         items.map(({ key, ...itemProps }: ArrayFieldTemplateItemType<T, S, F>) => (
                             <ArrayFieldItemTemplate key={key} {...itemProps} />
                         ))}
+                    {isClassifier && (
+                        <div>Pardon me while I work on something here--things might look a little funny for a bit (but should still function).</div>
+                    )}
                 </Col>
 
             </Row>

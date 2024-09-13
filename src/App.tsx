@@ -11,8 +11,20 @@ import variableUiSchema from "./assets/variable-ui-schema.json";
 import {BlurForm} from "./BlurForm";
 import React, {useCallback, useEffect, useState} from "react";
 import { CopyOutlined } from '@ant-design/icons';
+import {Client} from "@gradio/client";
 
 function App() {
+
+    const [client, setClient] = useState<Client | null>(null);
+
+    // Yes, this is an API key, right here in the code! But it's cool, because it only works for this service and the service rejects other domains anyway.
+    useEffect(() => {
+        const loadClient = async () => {
+            setClient(await Client.connect("Ravenok/statosphere-backend", {hf_token: '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'}));
+        };
+
+        loadClient();
+    }, []);
 
     const [classifierData, setClassifierData] = useState({});
     const [classifierJson, setClassifierJson] = useState('[]');
@@ -28,7 +40,6 @@ function App() {
 
     const [fullJson, setFullJson] = useState('');
 
-
     const inputStyle = {display: 'flex', paddingLeft: '8px', paddingRight: '8px'};
     const footerStyle = {
         position: 'fixed' as 'fixed',
@@ -38,6 +49,7 @@ function App() {
         display: 'flex',
         justifyContent: 'center',
     };
+
 
     const [formCopyFlag, setFormCopyFlag] = useState(false);
     const [formCopyStatus, setFormCopyStatus] = useState(false);
@@ -98,6 +110,7 @@ function App() {
                     formJson={variableJson}
                     setFormData={setVariableData}
                     setFormJson={setVariableJson}
+                    client={null}
                 />
 
                 <h1>Functions</h1>
@@ -108,6 +121,7 @@ function App() {
                     formJson={functionJson}
                     setFormData={setFunctionData}
                     setFormJson={setFunctionJson}
+                    client={null}
                 />
 
                 <h1>Classifiers</h1>
@@ -118,6 +132,7 @@ function App() {
                     formJson={classifierJson}
                     setFormData={setClassifierData}
                     setFormJson={setClassifierJson}
+                    client={client}
                 />
 
                 <h1>Content Modifiers</h1>
@@ -128,6 +143,7 @@ function App() {
                     formJson={contentJson}
                     setFormData={setContentData}
                     setFormJson={setContentJson}
+                    client={null}
                 />
                 <br/>
                 <div style={footerStyle}>

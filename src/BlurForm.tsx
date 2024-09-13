@@ -7,6 +7,7 @@ import ObjectFieldTemplate from "./ObjectFieldTemplate";
 import ArrayFieldTemplate from "./ArrayFieldTemplate";
 import ArrayFieldItemTemplate from "./ArrayFieldItemTemplate";
 import TextareaWidget from "./TextareaWidget";
+import {Client} from "@gradio/client";
 
 const ArrayFieldTitleTemplate = React.memo((props: ArrayFieldTitleProps) => {
     const {title} = props;
@@ -20,9 +21,10 @@ interface BlurFormProps {
     formJson: string;
     setFormData:  Dispatch<SetStateAction<{}>>;
     setFormJson:  Dispatch<SetStateAction<string>>;
+    client: Client|null;
 }
 
-export const BlurForm: React.FC<BlurFormProps> = ({schema, uiSchema, formData, formJson, setFormData, setFormJson}) => {
+export const BlurForm: React.FC<BlurFormProps> = ({schema, uiSchema, formData, formJson, setFormData, setFormJson, client}) => {
     const formStringify = useMemo(() => fastJson(schema), [schema]);
 
     const handleDataChange = useCallback((data: any, id: string|undefined) => {
@@ -59,7 +61,7 @@ export const BlurForm: React.FC<BlurFormProps> = ({schema, uiSchema, formData, f
                 onBlur={() => handleDataBlur()}
                 onChange={(e, id) => handleDataChange(e.formData, id)}
                 formData={formData}
-                formContext={{descriptionLocation: 'tooltip'}}
+                formContext={{descriptionLocation: 'tooltip', client: client}}
                 validator={validator}
                 templates={{
                     ObjectFieldTemplate: ObjectFieldTemplate,
