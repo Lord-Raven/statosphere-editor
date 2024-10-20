@@ -1,5 +1,5 @@
 import { Col, Row } from 'antd';
-import { ArrayFieldTemplateItemType, FormContextType, RJSFSchema, StrictRJSFSchema } from '@rjsf/utils';
+import {ArrayFieldTemplateItemType, FormContextType, RJSFSchema, StrictRJSFSchema} from '@rjsf/utils';
 
 const BTN_STYLE = {
     width: '100%',
@@ -32,7 +32,8 @@ export default function ArrayFieldItemTemplate<
     const { rowGutter = 16, toolbarAlign = 'top' } = registry.formContext;
     return (
         <Row align={toolbarAlign} key={`array-item-${index}`} gutter={rowGutter}>
-            <Col span={23}><div style={{backgroundColor: '#ffffff11'}}>{children}</div></Col>
+            <Col span={23}><div style={{backgroundColor: '#ffffff11'}}>{children}</div>
+            </Col>
             {hasToolbar && (
                 <Col span={1}>
                     {(hasMoveUp || hasMoveDown) && (

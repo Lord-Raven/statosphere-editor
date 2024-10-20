@@ -11,6 +11,7 @@ import {
 import classNames from 'classnames';
 import { Col, Row, ConfigProvider } from 'antd';
 import { useContext } from 'react';
+import ArrayFieldItemTemplate from "./ArrayFieldItemTemplate";
 
 export default function ArrayFieldTemplate<
     T = any,
@@ -33,16 +34,7 @@ export default function ArrayFieldTemplate<
         uiSchema,
     } = props;
     const uiOptions = getUiOptions<T, S, F>(uiSchema);
-    const ArrayFieldDescriptionTemplate = getTemplate<'ArrayFieldDescriptionTemplate', T, S, F>(
-        'ArrayFieldDescriptionTemplate',
-        registry,
-        uiOptions
-    );
-    const ArrayFieldItemTemplate = getTemplate<'ArrayFieldItemTemplate', T, S, F>(
-        'ArrayFieldItemTemplate',
-        registry,
-        uiOptions
-    );
+
     const ArrayFieldTitleTemplate = getTemplate<'ArrayFieldTitleTemplate', T, S, F>(
         'ArrayFieldTitleTemplate',
         registry,
@@ -62,14 +54,9 @@ export default function ArrayFieldTemplate<
         labelAlign === 'left' && `${labelClsBasic}-left`
         // labelCol.className,
     );
-    console.log(labelColClassName);
-    console.log(uiSchema);
-
     const BTN_GRP_STYLE = {
         width: '100%',
     };
-
-    const isClassifier = uiSchema && uiSchema["classifications"];
 
     return (
         <fieldset className={className} id={idSchema.$id}>
@@ -106,11 +93,7 @@ export default function ArrayFieldTemplate<
                         items.map(({ key, ...itemProps }: ArrayFieldTemplateItemType<T, S, F>) => (
                             <ArrayFieldItemTemplate key={key} {...itemProps} />
                         ))}
-                    {isClassifier && (
-                        <div>Pardon me while I work on something here--things might look a little funny for a bit (but should still function).</div>
-                    )}
                 </Col>
-
             </Row>
         </fieldset>
     );

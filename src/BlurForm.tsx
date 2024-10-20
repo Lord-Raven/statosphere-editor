@@ -1,11 +1,10 @@
 import {ArrayFieldTitleProps} from "@rjsf/utils";
-import React, {Dispatch, SetStateAction, useCallback, useMemo, useState} from "react";
+import React, {Dispatch, SetStateAction, useCallback, useMemo} from "react";
 import fastJson from "fast-json-stringify";
 import Form from "@rjsf/antd";
 import validator from "@rjsf/validator-ajv8";
 import ObjectFieldTemplate from "./ObjectFieldTemplate";
 import ArrayFieldTemplate from "./ArrayFieldTemplate";
-import ArrayFieldItemTemplate from "./ArrayFieldItemTemplate";
 import TextareaWidget from "./TextareaWidget";
 import {Client} from "@gradio/client";
 
@@ -39,7 +38,7 @@ export const BlurForm: React.FC<BlurFormProps> = ({schema, uiSchema, formData, f
             }
             setFormJson(json);
         }
-    }, [formData, formJson, formStringify]);
+    }, [formData, setFormData, formJson, setFormJson, formStringify]);
 
     const handleDataBlur = useCallback(() => {
 
@@ -51,8 +50,7 @@ export const BlurForm: React.FC<BlurFormProps> = ({schema, uiSchema, formData, f
             json = JSON.stringify(formData);
         }
         setFormJson(json);
-    }, [formData, formJson, formStringify]);
-
+    }, [formData, formJson, setFormJson, formStringify]);
     return (
         <div>
             <Form
@@ -66,7 +64,6 @@ export const BlurForm: React.FC<BlurFormProps> = ({schema, uiSchema, formData, f
                 templates={{
                     ObjectFieldTemplate: ObjectFieldTemplate,
                     ArrayFieldTemplate: ArrayFieldTemplate,
-                    ArrayFieldItemTemplate: ArrayFieldItemTemplate,
                     ArrayFieldTitleTemplate: ArrayFieldTitleTemplate
                 }}
                 widgets={{

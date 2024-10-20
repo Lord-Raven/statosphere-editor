@@ -1,0 +1,46 @@
+{
+  "ui:submitButtonOptions": {
+    "norender": true
+  },
+  "items": {
+    "ui:label": false,
+    "ui:grid": [
+      {
+        "name": 3,
+        "phase": 3,
+        "condition": 12,
+        "minTokens": 3,
+        "maxTokens": 3
+      },
+      {
+        "prompt": 24
+      },
+      {
+        "updates": 24
+      }
+    ],
+    "condition": {
+      "ui:widget": "textarea"
+    },
+    "prompt": {
+      "ui:widget": "textarea"
+    },
+    "template": {
+      "ui:widget": "textarea"
+    },
+    "updates": {
+      "items": {
+        "ui:label": false,
+        "ui:grid": [
+          {
+            "variable": 6,
+            "setTo": 18
+          }
+        ],
+        "setTo": {
+          "ui:widget": "textarea"
+        }
+      }
+    }
+  }
+}

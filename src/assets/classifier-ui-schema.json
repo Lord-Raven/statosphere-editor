@@ -40,8 +40,9 @@
         "ui:grid": [
           {
             "label": 12,
-            "category": 6,
-            "threshold": 6
+            "dynamic": 2,
+            "category": 5,
+            "threshold": 5
           },
           {
             "updates": 24
@@ -49,6 +50,9 @@
         ],
         "threshold": {
           "ui:widget": "range"
+        },
+        "dynamic": {
+          "ui:widget": "select"
         },
         "updates": {
           "items": {
