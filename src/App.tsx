@@ -14,6 +14,9 @@ import {BlurForm} from "./BlurForm";
 import React, {useCallback, useEffect, useState} from "react";
 import { CopyOutlined } from '@ant-design/icons';
 import {Client} from "@gradio/client";
+import { Tabs } from 'antd';
+
+const {TabPane} = Tabs;
 
 function App() {
 
@@ -105,60 +108,63 @@ function App() {
                 Statosphere Configuration Builder
             </header>
             <ConfigProvider theme={{algorithm: [theme.darkAlgorithm, theme.compactAlgorithm]}}>
-                <h1>Variables</h1>
-                <BlurForm
-                    schema={variableSchema}
-                    uiSchema={variableUiSchema}
-                    formData={variableData}
-                    formJson={variableJson}
-                    setFormData={setVariableData}
-                    setFormJson={setVariableJson}
-                    client={null}
-                />
-
-                <h1>Functions</h1>
-                <BlurForm
-                    schema={functionSchema}
-                    uiSchema={functionUiSchema}
-                    formData={functionData}
-                    formJson={functionJson}
-                    setFormData={setFunctionData}
-                    setFormJson={setFunctionJson}
-                    client={null}
-                />
-
-                <h1>Generators</h1>
-                <BlurForm
-                    schema={generatorSchema}
-                    uiSchema={generatorUiSchema}
-                    formData={generatorData}
-                    formJson={generatorJson}
-                    setFormData={setGeneratorData}
-                    setFormJson={setGeneratorJson}
-                    client={client}
-                />
-
-                <h1>Classifiers</h1>
-                <BlurForm
-                    schema={classifierSchema}
-                    uiSchema={classifierUiSchema}
-                    formData={classifierData}
-                    formJson={classifierJson}
-                    setFormData={setClassifierData}
-                    setFormJson={setClassifierJson}
-                    client={client}
-                />
-
-                <h1>Content Modifiers</h1>
-                <BlurForm
-                    schema={contentSchema}
-                    uiSchema={contentUiSchema}
-                    formData={contentData}
-                    formJson={contentJson}
-                    setFormData={setContentData}
-                    setFormJson={setContentJson}
-                    client={null}
-                />
+                <Tabs size={"large"}>
+                    <TabPane tab="Variables" key="1">
+                        <BlurForm
+                            schema={variableSchema}
+                            uiSchema={variableUiSchema}
+                            formData={variableData}
+                            formJson={variableJson}
+                            setFormData={setVariableData}
+                            setFormJson={setVariableJson}
+                            client={null}
+                        />
+                    </TabPane>
+                    <TabPane tab="Functions" key="2">
+                        <BlurForm
+                            schema={functionSchema}
+                            uiSchema={functionUiSchema}
+                            formData={functionData}
+                            formJson={functionJson}
+                            setFormData={setFunctionData}
+                            setFormJson={setFunctionJson}
+                            client={null}
+                        />
+                    </TabPane>
+                    <TabPane tab="Generators" key="3">
+                        <BlurForm
+                            schema={generatorSchema}
+                            uiSchema={generatorUiSchema}
+                            formData={generatorData}
+                            formJson={generatorJson}
+                            setFormData={setGeneratorData}
+                            setFormJson={setGeneratorJson}
+                            client={client}
+                        />
+                    </TabPane>
+                    <TabPane tab="Classifiers" key="4">
+                        <BlurForm
+                            schema={classifierSchema}
+                            uiSchema={classifierUiSchema}
+                            formData={classifierData}
+                            formJson={classifierJson}
+                            setFormData={setClassifierData}
+                            setFormJson={setClassifierJson}
+                            client={client}
+                        />
+                    </TabPane>
+                    <TabPane tab="Content Modifiers" key="5">
+                        <BlurForm
+                            schema={contentSchema}
+                            uiSchema={contentUiSchema}
+                            formData={contentData}
+                            formJson={contentJson}
+                            setFormData={setContentData}
+                            setFormJson={setContentJson}
+                            client={null}
+                        />
+                    </TabPane>
+                </Tabs>
                 <br/>
                 <div style={footerStyle}>
                     <header className="App-footer">

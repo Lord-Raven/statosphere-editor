@@ -7,10 +7,11 @@
     "ui:grid": [
       {
         "name": 3,
-        "phase": 3,
-        "condition": 12,
-        "minTokens": 3,
-        "maxTokens": 3
+        "phase": 2,
+        "lazy": 2,
+        "condition": 13,
+        "minTokens": 2,
+        "maxTokens": 2
       },
       {
         "prompt": 24
@@ -19,6 +20,9 @@
         "updates": 24
       }
     ],
+    "lazy": {
+      "ui:widget": "select"
+    },
     "condition": {
       "ui:widget": "textarea"
     },
