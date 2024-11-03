@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/statosphere-editor/static/css/main.9a0d7cce.css",
+    "main.css": "/statosphere-editor/static/css/main.bf393999.css",
     "main.js": "/statosphere-editor/static/js/main.08a0b952.js",
     "static/js/584.4a80bc2d.chunk.js": "/statosphere-editor/static/js/584.4a80bc2d.chunk.js",
     "static/js/575.63299ce5.chunk.js": "/statosphere-editor/static/js/575.63299ce5.chunk.js",
@@ -8,13 +8,13 @@
     "static/js/453.d320a7be.chunk.js": "/statosphere-editor/static/js/453.d320a7be.chunk.js",
     "static/js/152.09116ea2.chunk.js": "/statosphere-editor/static/js/152.09116ea2.chunk.js",
     "index.html": "/statosphere-editor/index.html",
-    "main.9a0d7cce.css.map": "/statosphere-editor/static/css/main.9a0d7cce.css.map",
+    "main.bf393999.css.map": "/statosphere-editor/static/css/main.bf393999.css.map",
     "main.08a0b952.js.map": "/statosphere-editor/static/js/main.08a0b952.js.map",
     "453.d320a7be.chunk.js.map": "/statosphere-editor/static/js/453.d320a7be.chunk.js.map",
     "152.09116ea2.chunk.js.map": "/statosphere-editor/static/js/152.09116ea2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9a0d7cce.css",
+    "static/css/main.bf393999.css",
     "static/js/main.08a0b952.js"
   ]
 }
