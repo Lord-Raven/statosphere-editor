@@ -7,11 +7,20 @@
     "ui:grid": [
       {
         "name": 3,
-        "phase": 2,
+        "type": 2,
+        "phase": 3,
         "lazy": 2,
-        "condition": 13,
-        "minTokens": 2,
-        "maxTokens": 2
+        "condition": 14
+      },
+      {
+        "minTokens": 10,
+        "maxTokens": 10,
+        "includeHistory": 4
+      },
+      {
+        "aspectRatio": 4,
+        "negativePrompt": 18,
+        "removeBackground": 2
       },
       {
         "prompt": 24
@@ -20,6 +29,9 @@
         "updates": 24
       }
     ],
+    "type": {
+      "ui:widget": "select"
+    },
     "lazy": {
       "ui:widget": "select"
     },
@@ -29,8 +41,17 @@
     "prompt": {
       "ui:widget": "textarea"
     },
-    "template": {
+    "negativePrompt": {
       "ui:widget": "textarea"
+    },
+    "includeHistory": {
+      "ui:widget": "select"
+    },
+    "removeBackground": {
+      "ui:widget": "select"
+    },
+    "aspectRatio": {
+      "ui:widget": "select"
     },
     "updates": {
       "items": {
