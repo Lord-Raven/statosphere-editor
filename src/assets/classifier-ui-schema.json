@@ -6,14 +6,15 @@
     "ui:label": false,
     "ui:grid": [
       {
-        "name": 6,
-        "inputTemplate": 9,
-        "inputHypothesis": 9
+        "name": 3,
+        "dependencies": 5,
+        "inputTemplate": 8,
+        "inputHypothesis": 8
       },
       {
-        "condition": 6,
-        "responseTemplate": 9,
-        "responseHypothesis": 9
+        "condition": 8,
+        "responseTemplate": 8,
+        "responseHypothesis": 8
       },
       {
         "classifications": 24

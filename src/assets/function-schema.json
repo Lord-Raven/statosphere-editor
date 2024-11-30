@@ -12,11 +12,11 @@
       },
       "parameters": {
         "title": "Parameters",
-        "description": "String-delimited list of parameters.",
+        "description": "Comma-delimited list of parameters.",
         "type": "string"
       },
       "body": {
-        "title": "Body",
+        "title": "Function Body",
         "description": "The body of this function.",
         "type": "string"
       }

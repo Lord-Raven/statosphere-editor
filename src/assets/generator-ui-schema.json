@@ -10,7 +10,8 @@
         "type": 2,
         "phase": 3,
         "lazy": 2,
-        "condition": 14
+        "dependencies": 7,
+        "condition": 7
       },
       {
         "minTokens": 10,
