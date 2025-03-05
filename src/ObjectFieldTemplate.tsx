@@ -125,21 +125,27 @@ export default function ObjectFieldTemplate<
     let isClassifier = formData && typeof formData === 'object' && "classifications" in formData && formContext && formContext.client;
 
     const testAsInput = useCallback((input: string, client: Client, formData: any) => {
-        let candidateLabels: string[] = formData.classifications
-            .filter((classification: {label: any, dynamic: boolean}) => !classification.dynamic)
-            .map((classification: {label: any}) => classification.label);
+        let candidateLabelMapping: {[key: string]: string} = {};
 
-        if (candidateLabels.length == 0 || !formData.inputTemplate || !formData.inputHypothesis || !input) {
+        for (let classification of formData.classifications) {
+            if (!classification.dynamic) {
+                const adjustedLabel = classification.label.replace('{{char}}', 'Chris Doe').replace('{{user}}', 'Kaden Castellanos');
+                candidateLabelMapping[adjustedLabel] = classification.label;
+            }
+        }
+
+        if (Object.keys(candidateLabelMapping).length == 0 || !formData.inputTemplate || !formData.inputHypothesis || !input) {
             setClassifierResult('Fill out input, (non-dynamic) labels, and test phrase before testing.');
             return;
         }
+
         try {
-            let data = {sequence: formData.inputTemplate.replace('{}', input), candidate_labels: candidateLabels, hypothesis_template: formData.inputHypothesis, multi_label: true};
+            let data = {sequence: formData.inputTemplate.replace('{}', input).replace('{{char}}', 'Chris Doe').replace('{{user}}', 'Kaden Castellanos'), candidate_labels: Object.keys(candidateLabelMapping), hypothesis_template: formData.inputHypothesis, multi_label: true};
             console.log(data);
             client.predict("/predict", {data_string: JSON.stringify(data)}).then((response:{data: any}) => {
                 console.log(response);
                 const responseStructure = JSON.parse(response.data[0]);
-                const output = responseStructure.labels.map((value: string, index: number) => {return `${value}: ${responseStructure.scores[index]}`}).join('\n');
+                const output = responseStructure.labels.map((value: string, index: number) => {return `${candidateLabelMapping[value]}: ${responseStructure.scores[index]}`}).join('\n');
                 setClassifierResult(output);
             }).catch(error => {
                 setClassifierResult('Classification failed; check the input fields above. Template fields require an occurrence of "{}".');
@@ -152,22 +158,26 @@ export default function ObjectFieldTemplate<
     }, []);
 
     const testAsResponse = useCallback((response: string, client: Client, formData: any) => {
-        let candidateLabels: string[] = formData.classifications.map((classification: {
-            label: any;
-        }) => classification.label);
+        let candidateLabelMapping: {[key: string]: string} = {};
 
-        if (candidateLabels.length == 0 || !formData.responseTemplate || !formData.responseHypothesis || !response) {
+        for (let classification of formData.classifications) {
+            if (!classification.dynamic) {
+                const adjustedLabel = classification.label.replace('{{char}}', 'Chris Doe').replace('{{user}}', 'Kaden Castellanos');
+                candidateLabelMapping[adjustedLabel] = classification.label;
+            }
+        }
+
+        if (Object.keys(candidateLabelMapping).length == 0 || !formData.responseTemplate || !formData.responseHypothesis || !response) {
             setClassifierResult('Fill out response, labels, and test phrase before testing.');
             return;
         }
         try {
-            let candidateLabels: string[] = formData.classifications.map((classification: { label: any; }) => classification.label);
-            let data = {sequence: formData.responseTemplate.replace('{}', response), candidate_labels: candidateLabels, hypothesis_template: formData.responseHypothesis, multi_label: true};
+            let data = {sequence: formData.responseTemplate.replace('{}', response).replace('{{char}}', 'Chris Doe').replace('{{user}}', 'Kaden Castellanos'), candidate_labels: Object.keys(candidateLabelMapping), hypothesis_template: formData.responseHypothesis, multi_label: true};
             console.log(data);
             client.predict("/predict", {data_string: JSON.stringify(data)}).then((response:{data: any}) => {
                 console.log(response);
                 const responseStructure = JSON.parse(response.data[0]);
-                const output = responseStructure.labels.map((value: string, index: number) => {return `${value}: ${responseStructure.scores[index]}`}).join('\n');
+                const output = responseStructure.labels.map((value: string, index: number) => {return `${candidateLabelMapping[value]}: ${responseStructure.scores[index]}`}).join('\n');
                 setClassifierResult(output);
             }).catch(error => {
                 setClassifierResult('Classification failed; check the response fields above. Template fields require an occurrence of "{}".');

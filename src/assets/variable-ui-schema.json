@@ -7,10 +7,11 @@
     "ui:grid": [
       {
         "name": 4,
-        "initialValue": 5,
-        "perTurnUpdate": 5,
-        "postInputUpdate": 5,
-        "postResponseUpdate": 5
+        "initialValue": 4,
+        "perTurnUpdate": 4,
+        "postInputUpdate": 4,
+        "preResponseUpdate": 4,
+        "postResponseUpdate": 4
       }
     ],
     "initialValue": {
@@ -20,6 +21,9 @@
       "ui:widget": "textarea"
     },
     "postInputUpdate": {
+      "ui:widget": "textarea"
+    },
+    "preResponseUpdate": {
       "ui:widget": "textarea"
     },
     "postResponseUpdate": {
