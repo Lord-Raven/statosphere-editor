@@ -140,7 +140,7 @@ export default function ObjectFieldTemplate<
         }
 
         try {
-            let data = {sequence: formData.inputTemplate.replace('{}', input).replace('{{char}}', 'Chris Doe').replace('{{user}}', 'Kaden Castellanos'), candidate_labels: Object.keys(candidateLabelMapping), hypothesis_template: formData.inputHypothesis, multi_label: true};
+            let data = {sequence: formData.inputTemplate.replace('{}', input).replace('{{char}}', 'Chris Doe').replace('{{user}}', 'Kaden Castellanos'), candidate_labels: Object.keys(candidateLabelMapping), hypothesis_template: formData.inputHypothesis.replace('{{char}}', 'Chris Doe').replace('{{user}}', 'Kaden Castellanos'), multi_label: true};
             console.log(data);
             client.predict("/predict", {data_string: JSON.stringify(data)}).then((response:{data: any}) => {
                 console.log(response);
@@ -172,7 +172,7 @@ export default function ObjectFieldTemplate<
             return;
         }
         try {
-            let data = {sequence: formData.responseTemplate.replace('{}', response).replace('{{char}}', 'Chris Doe').replace('{{user}}', 'Kaden Castellanos'), candidate_labels: Object.keys(candidateLabelMapping), hypothesis_template: formData.responseHypothesis, multi_label: true};
+            let data = {sequence: formData.responseTemplate.replace('{}', response).replace('{{char}}', 'Chris Doe').replace('{{user}}', 'Kaden Castellanos'), candidate_labels: Object.keys(candidateLabelMapping), hypothesis_template: formData.responseHypothesis.replace('{{char}}', 'Chris Doe').replace('{{user}}', 'Kaden Castellanos'), multi_label: true};
             console.log(data);
             client.predict("/predict", {data_string: JSON.stringify(data)}).then((response:{data: any}) => {
                 console.log(response);
