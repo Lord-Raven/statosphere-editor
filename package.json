@@ -38,7 +38,7 @@
     "classnames": "^2.5.1",
     "antd": "^5.20.1",
     "fast-json-stringify": "^6.0.0",
-    "@gradio/client": "^1.5.2"
+    "@gradio/client": "^1.14.0"
   },
   "scripts": {
     "predeploy": "npm run build",

@@ -1600,10 +1600,10 @@
   dependencies:
     fast-deep-equal "^3.1.3"
 
-"@gradio/client@^1.5.2":
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/@gradio/client/-/client-1.5.2.tgz#c5e4cc1439776f9c265100d164d3bdd5030c94e1"
-  integrity sha512-PJbt8n3ROxDXrR55D8oPYPIIkdmG5ksyljtgNM6Kr/FgTMTwGqiiYDdoyUIGwQSBu6g+jan2zbHoniDZePw3pg==
+"@gradio/client@^1.14.0":
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/@gradio/client/-/client-1.14.0.tgz#7eed032294be79085150c9743e949eb8017909ea"
+  integrity sha512-BqM4D6RNCjInJG0OcGrAbik+DX4kRht2XrB7Mkd6bT5rtP3pUStZFRqb+mOuw+wvZvDfm4K0SngB/9X2i+RtTg==
   dependencies:
     "@types/eventsource" "^1.1.15"
     bufferutil "^4.0.7"
