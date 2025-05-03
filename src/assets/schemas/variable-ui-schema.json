@@ -6,12 +6,12 @@
     "ui:label": false,
     "ui:grid": [
       {
-        "name": 4,
-        "initialValue": 4,
-        "perTurnUpdate": 4,
-        "postInputUpdate": 4,
-        "preResponseUpdate": 4,
-        "postResponseUpdate": 4
+        "name": 3,
+        "initialValue": 9,
+        "perTurnUpdate": 3,
+        "postInputUpdate": 3,
+        "preResponseUpdate": 3,
+        "postResponseUpdate": 3
       }
     ],
     "initialValue": {

@@ -1,30 +1,34 @@
 import './App.css';
 import {Button, ConfigProvider, Input, theme} from 'antd';
-import classifierSchema from "./assets/classifier-schema.json";
-import contentSchema from "./assets/content-schema.json";
-import functionSchema from "./assets/function-schema.json";
-import generatorSchema from "./assets/generator-schema.json";
-import variableSchema from "./assets/variable-schema.json";
-import classifierUiSchema from "./assets/classifier-ui-schema.json";
-import contentUiSchema from "./assets/content-ui-schema.json";
-import functionUiSchema from "./assets/function-ui-schema.json";
-import generatorUiSchema from "./assets/generator-ui-schema.json";
-import variableUiSchema from "./assets/variable-ui-schema.json";
+import classifierSchema from "./assets/schemas/classifier-schema.json";
+import contentSchema from "./assets/schemas/content-schema.json";
+import functionSchema from "./assets/schemas/function-schema.json";
+import generatorSchema from "./assets/schemas/generator-schema.json";
+import variableSchema from "./assets/schemas/variable-schema.json";
+import classifierUiSchema from "./assets/schemas/classifier-ui-schema.json";
+import contentUiSchema from "./assets/schemas/content-ui-schema.json";
+import functionUiSchema from "./assets/schemas/function-ui-schema.json";
+import generatorUiSchema from "./assets/schemas/generator-ui-schema.json";
+import variableUiSchema from "./assets/schemas/variable-ui-schema.json";
+import referenceMd from "./assets/markdown/reference.md";
 import {BlurForm} from "./BlurForm";
 import React, {useCallback, useEffect, useState} from "react";
 import { CopyOutlined } from '@ant-design/icons';
 import {Client} from "@gradio/client";
 import { Tabs } from 'antd';
+import ReactMarkdown from 'react-markdown';
 
 const {TabPane} = Tabs;
 
 function App() {
 
     const [client, setClient] = useState<Client | null>(null);
+    const [referenceMarkdown, setReferenceMarkdown] = useState("");
 
     // Yes, this is an API key, right here in the code! But it's cool, because it only works for this service and the service rejects other domains anyway.
     useEffect(() => {
         Client.connect("Ravenok/statosphere-backend", {hf_token: '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'}).then(client => setClient(client));
+        fetch(referenceMd).then((res) => res.text()).then((text) => setReferenceMarkdown(text));
     }, []);
 
     const [classifierData, setClassifierData] = useState({});
@@ -163,6 +167,11 @@ function App() {
                             setFormJson={setContentJson}
                             client={null}
                         />
+                    </TabPane>
+                    <TabPane tab="Reference" key="6">
+                        <div style={{textAlign: "left", margin: "1em"}}>
+                            <ReactMarkdown>{referenceMarkdown}</ReactMarkdown>
+                        </div>
                     </TabPane>
                 </Tabs>
                 <br/>
