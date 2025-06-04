@@ -40,10 +40,11 @@
         "ui:label": false,
         "ui:grid": [
           {
-            "label": 12,
-            "dynamic": 2,
-            "category": 5,
-            "threshold": 5
+            "label": 7,
+            "condition": 7,
+            "dynamic": 3,
+            "category": 3,
+            "threshold": 4
           },
           {
             "updates": 24
