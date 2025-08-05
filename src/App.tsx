@@ -25,9 +25,8 @@ function App() {
     const [client, setClient] = useState<Client | null>(null);
     const [referenceMarkdown, setReferenceMarkdown] = useState("");
 
-    // Yes, this is an API key, right here in the code! But it's cool, because it only works for this service and the service rejects other domains anyway.
     useEffect(() => {
-        Client.connect("Ravenok/statosphere-backend", {hf_token: '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'}).then(client => setClient(client));
+        Client.connect("Ravenok/statosphere-backend").then(client => setClient(client));
         fetch(referenceMd).then((res) => res.text()).then((text) => setReferenceMarkdown(text));
     }, []);
 
