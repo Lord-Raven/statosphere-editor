@@ -14,9 +14,10 @@
         "condition": 7
       },
       {
-        "minTokens": 10,
-        "maxTokens": 10,
-        "includeHistory": 4
+        "minTokens": 6,
+        "maxTokens": 6,
+        "includeHistory": 5,
+        "retryCondition": 7
       },
       {
         "aspectRatio": 4,
