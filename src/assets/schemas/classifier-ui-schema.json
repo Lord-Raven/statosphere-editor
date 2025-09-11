@@ -7,12 +7,14 @@
     "ui:grid": [
       {
         "name": 3,
-        "dependencies": 5,
+        "condition": 5,
         "inputTemplate": 8,
         "inputHypothesis": 8
       },
       {
-        "condition": 8,
+        "dependencies": 4,
+        "useLlm": 2,
+        "useHistory": 2,
         "responseTemplate": 8,
         "responseHypothesis": 8
       },
@@ -34,6 +36,12 @@
     },
     "responseHypothesis": {
       "ui:widget": "textarea"
+    },
+    "useLlm": {
+      "ui:widget": "select"
+    },
+    "useHistory": {
+      "ui:widget": "select"
     },
     "classifications": {
       "items": {

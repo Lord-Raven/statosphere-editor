@@ -115,7 +115,7 @@ export default function ObjectFieldTemplate<
         return defaultColSpan;
     };
 
-    const [testInput, setTestInput] = useState("You can try out this classifier here. Replace this field with sample content, then choose to test as input or response and see how the model scores each label.");
+    const [testInput, setTestInput] = useState("You can try out this classifier here. Replace this field with sample content, then choose to test as input or response and see how the model scores each label. This can only use the zero-shot classifier and not the LLM.");
     const [classifierResult, setClassifierResult] = useState('');
 
     const handleTextInputChange = (e: any) => {
