@@ -21,8 +21,9 @@
       },
       {
         "aspectRatio": 4,
-        "negativePrompt": 18,
-        "removeBackground": 2
+        "removeBackground": 4,
+        "sourceImageUrl": 12,
+        "imageToImageType": 4
       },
       {
         "prompt": 24
