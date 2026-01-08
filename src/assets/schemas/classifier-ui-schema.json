@@ -12,11 +12,12 @@
         "inputHypothesis": 8
       },
       {
-        "dependencies": 4,
+        "dependencies": 3,
         "useLlm": 2,
         "useHistory": 2,
-        "responseTemplate": 8,
-        "responseHypothesis": 8
+        "historyContextSize": 3,
+        "responseTemplate": 7,
+        "responseHypothesis": 7
       },
       {
         "classifications": 24

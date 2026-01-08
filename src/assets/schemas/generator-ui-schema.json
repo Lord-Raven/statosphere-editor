@@ -14,10 +14,12 @@
         "condition": 7
       },
       {
-        "minTokens": 6,
-        "maxTokens": 6,
-        "includeHistory": 5,
-        "retryCondition": 7
+        "minTokens": 3,
+        "maxTokens": 3,
+        "includeHistory": 3,
+        "historyContextSize": 3,
+        "stoppingStrings": 6,
+        "retryCondition": 6
       },
       {
         "aspectRatio": 4,
